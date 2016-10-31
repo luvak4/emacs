@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{hyperref}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{microtype}
+\usepackage{booktabs}
+
+\begin{document}
+
+\setmainfont{Arial Narrow}
+
+\section{Emacs}
+
+\section{M-x}
+
+\rowcolors{0}{white}{gray!20}    
+\begin{tabular}{ll}
+  M-x desktop-save-mode & salvataggio della posizione dei buffer\\
+  M-x desktop-change-dir & per caricare un ``desktop'' salvato in altra posizione\\
+  M-x kill-source-buffer & chiudere un buffer\\
+  M-x balance-windows & per distribuire equamente le finestre nel desktop\\
+  M-x customize-option & per cambiare le impostazioni di emacs\\
+  M-x org-mode & andare in org-mode\\
+  M-x normal-mode & ritornare in modo standard\\
+  M-x comment-region & commentare una regione selezionata\\
+  M-x replace-string & sostituire testo con altro testo\\
+  M-x replace-regexp & sostituire testo con altro testo\\
+  M-x revert-buffer & ricaricare il buffer\\
+\end{tabular}
+
+\section{Vecchie info}
+
+\rowcolors{0}{white}{gray!20}    
+\begin{tabular}{ll}
+  \multicolumn{2}{c}{\textbf{Significato (computer windows)}}\\
+  C & Tasto [CTRL]!\\
+  M & Tasto [ALT]!\\
+  \multicolumn{2}{c}{\textbf{Spostamento}}\\
+  C-f & Sposta avanti di un \textbf{carattere}\\
+  C-b & Sposta indietro di un carattere\\
+  M-f & Sposta avanti di una \textbf{parola}\\
+  M-b & Sposta indietro di una parola\\
+  C-n & Sposta alla \textbf{riga} successiva\\
+  C-p & Sposta alla riga precedente\\
+  C-a & Sposta all'inizio della \textbf{riga}\\
+  C-e & Sposta alla fine della riga\\
+  M-a & Sposta all'inizio della \textbf{frase}\\
+  M-e & Sposta alla fine della frase\\
+  M-< & inizio di tutto il \textbf{testo}\\
+  M-> & fine di tutto il testo\\
+  \multicolumn{2}{c}{\textbf{Comandi: esempi}}\\
+  \textbf{C-u 8} C-f & Sposta il cursore avanti di 8 caratteri\\
+  C-u 8 C-v & Sposta il cursore avanti di 8 righe\\
+  C-u 32 = & inserisce 32 '='\\
+  C-g & Stoppare Emacs se si blocca, oppure equivalente di "Undo"\\
+  C-x 1 & una finestra (Emacs può avere più finestre aperte)\\
+  C-u 0 C-l & La riga in cui era il cursore è la prima riga del testo in alto\\
+  [INVIO]! & Inserisce il carattere \textbf{newline}\\
+  C-[spazio]! o C-@ & inizio selezione\\
+  \multicolumn{2}{c}{\textbf{Cancellazione}}\\
+  [Delete]! & cancella il carattere posto subito prima del cursore\\
+  C-d & cancella il carattere posto subito dopo il cursore\\
+  M-[Delete]! & elimina la parola posta prima del cursore\\
+  M-d & elimina la parola posta subito dopo il cursore\\
+  C-k & cancella dalla posizione del cursore fino a fine riga\\
+  M-k & cancella fino alla fine della frase corrente\\
+  \multicolumn{2}{c}{\textbf{Significati cancellazione}}\\
+  deleting & Cancellazione: definitivo\\
+  killing & Eliminazione: può essere reinserito\\
+  yanking & Strappare: reinserimento di testo eliminato\\
+  \multicolumn{2}{c}{\textbf{Yanking}}\\
+  C-y & Yanking\\
+  M-y & Yanking delle cancellazioni precedenti\\
+  \multicolumn{2}{c}{\textbf{Ultime cose imparate}}\\
+  C-x f (global-set-key(kbd ``C-x f'') 'find-file-at-point)  & Apre il file il cui nome risulta selezionato\\
+  C-x $ \leftarrow $ C-x $ \rightarrow $ & Buffer precedente / successivo\\
+  C-x u & Undo\\
+  C-x u C-x zzzzzz & Undo multiplo schiacciando solo la 'z'\\
+  C-x [TAB]! & risistema la tabulazione del testo selezionato\\
+  C-a & Inizio riga\\
+  C-k & Cancella riga\\
+  M-x show-paren-mode [INVIO]! & Evidenzia coppie di parentesi\\
+  C-x C-v [INVIO]! & Ricarica file\\
+  M-w & copia\\
+  C-y & incolla\\
+  C-x C-s & salva\\
+  C-x C-w & scrive su file\\
+  C-x C-x & esci da emacs\\
+  C-x 3 & crea un buffer a dx\\
+  C-x C-f & apre un file\\
+  C-x o & posiziona il cursore su un altro buffer\\
+\end{tabular}
+\newpage
+\begin{tabular}{ll}  
+  C-x C-+ & ingrandisce il carattere\\
+  C-x C-- & rimpicciolisce\\
+  C-s & cerca avanti\\
+  C-r & cerca indietro\\
+  C-x TAB & indentare regione\\
+\end{tabular}
+
+\section{Usare Emacs-Org}
+Per prima cosa creare un file con estensione .org. Aprendolo con Emacs sarà interpretato come ``file- organizer''. Si possono creare strutture con asterischi tipo:
+
+\begin{verbatim}
+  * TODO Struttura
+  ** figlio
+  ** figlio
+  *** TODO figlio di figlio
+  *** eccetera
+  ** figlio
+\end{verbatim}
+
+la parola TODO è una parola ``attiva'': premendo la combinazione C-c C-t cambia di stato TODO-DONE-TODO! ed inserisce la data di completamento. M-[SHIFT][INVIO]! crea un nuovo TODO!. Se si vuole avere la percentuale di completamento, sul padre inserire una parentesi quadra con dentro [\%]! oppure [/]!; a seconda del completamento dei figli indicherà una nuova percentuale. Esempio:
+
+\begin{verbatim}
+  1. [2/4] simbolo di barra / o percentuale
+  - [X] eeeee
+  - [-] C-c C-c per commutare
+  - [-] questo dipende da questo
+  - [ ] e da questo
+  - [-] anche questo
+  - [X] prova
+\end{verbatim}
+
+\begin{itemize}[noitemsep,nolistsep]
+\item Per inserire iperlink: [[collegamento][descrizione]].
+\item C-c C-o per seguire il collegamento col browser
+\item [SHIFT][TAB]! comprime/decomprime la struttura
+\item C-c C-s apre l'agenda 
+\item C-c a a guarda gli impegni in agenda
+\item Posso inserire anche dei piedipagina con [piedipagina: numero]
+\item Posso creare dei link interni al documento inserendo: #+NAME: Mio Collegamento! Inserendo [[Mio Collegamento][Questo \'e un collegamento interno]]! potr\'o fare il link richiesto.
+ù\end{itemize}
+
+\section{Caricare il modulo visual basic}
+Per prima cosa ho scaricato il file in linguaggio Lisp che permette la colorazione della sintassi (visual-basic-mode.el) e l'ho posizionato nella cartella E:\Programmi\emacs\bin!. Ho quindi fatto partire Emacs, quindi M-x load-file! quindi inserito il nome del file visual-basic-mode.el!. Ho caricato il file esempio.vb! quindi lanciato il comando M-x visual-basic-mode! e la colorazione del testo è avvenuta.
+
+\section{Installazione su PC ufficio Win7}
+Dopo aver copiato la cartella emacs! su e:\programmi! ricordarsi che la cartella del programma emacs si trova su C:\Documents and Settings\valcavi\Dati applicazioni\.emacs.d! la cui cartella-padre non è navigabile pertanto occorre conoscere esattamente il percorso. Dopo essersi posizionati all'interno di questa cartella creare il file init.el! con questo contenuto: (global-set-key(kbd "C-x f")'find-file-at-point)! che permette di aprire un file quando il nome è evidenziato (fondamentale in \LaTeX).
+
+\section{Salvare la posizione dei vari frame del desktop}
+Occorre modificare il file di configurazione di emacs che in Win Xp si trova in  C:\Documents and Settings\valcavi\Dati applicazioni\.emacs.d! aggiungendo questa riga (desktop-save-mode 1)!
+
+\section{Ricerca Sostituzione}
+
+\rowcolors{0}{white}{gray!20}    
+\begin{tabular}{ll}
+  C-A C-S & Cerca regex\\
+  C-A C-S C-S C-S.... & cerca regex i successivi \\
+  C-A C-R & cerca il precedente \\
+  C-A C-R C-R C-R ... & cerca regex precedenti \\
+  C-X C-L & lettere maiuscole/minuscole \\
+  C-q C-j & significa ritorno a capo (nelle ricerche/sostituzioni) \\
+  M-\% & ricerca/sostituisci\\
+\end{tabular}
+
+\end{document}
